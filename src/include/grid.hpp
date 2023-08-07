@@ -5,17 +5,17 @@ class GameGrid
 {
 private:
 
-int                   cols;
-int                   rows;
-int                   tilePadding;
-sf::Vector2f          tileSize;
+    int                   cols;
+    int                   rows;
+    float                 tilePadding;
+    sf::Vector2f          tileSize;
 
-int **                grid;
-sf::RectangleShape ** tiles;
+    int **                grid;
+    sf::RectangleShape ** tiles;
 
 public:
 
-    GameGrid(int rows, int cols, sf::Vector2f tile, int tilePadding);
+    GameGrid(int rows, int cols, sf::Vector2f tile, float tilePadding);
 
     ~GameGrid();
 
