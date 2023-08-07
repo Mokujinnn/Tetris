@@ -7,32 +7,32 @@ int main()
 {
     srand(time(NULL));
 
-    sf::Clock clock;
+    
 
-    int windowHeight = 720, windowWidth = 1280;
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Test");
+    int poleHeight = 20, poleWidth = 10;
+    int tilePadding = 2;
+
+    sf::Vector2f tile(30, 30);
+    float tileWidth = tile.x, tileHeight = tile.y;
+
+    int windowHeight = tilePadding + (tile.x + tilePadding) * poleHeight; 
+    int windowWidth  =  tilePadding + (tile.y + tilePadding) * poleWidth;
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Tetris");
     window.setPosition(sf::Vector2i(300, 150));
-    window.setVerticalSyncEnabled(true);
-
-    int poleHeight = 15, poleWidth = 10;
-    int poleBlocksPadding = 2;
-
-    float tileWidth = 40, tileHeight = 40;
-    sf::Vector2f tile(tileWidth, tileHeight);
 
     sf::RectangleShape pole[poleHeight][poleWidth];
-
+    sf::Clock clock;
     for(int i = 0; i < poleHeight; i++)
     {
         for(int j = 0; j < poleWidth; j++)
         {
-            pole[i][j].setPosition(sf::Vector2f(tileWidth*j - tileWidth/2 + poleBlocksPadding*j + windowWidth/2 - poleWidth * tileWidth / 2, 
-            tileHeight*i - tileHeight/2 + poleBlocksPadding*i + windowHeight/2 - poleHeight * tileHeight / 2)); // Расположение поля на экране
+            pole[i][j].setPosition(sf::Vector2f(tilePadding + tileWidth*j + tilePadding*j, tilePadding + tileHeight*i + tilePadding*i)); // Расположение поля на экране
             pole[i][j].setSize(tile);
             pole[i][j].setOutlineThickness(0);
             pole[i][j].setOutlineColor(sf::Color::Cyan);
         }
     }
+
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asMilliseconds();
