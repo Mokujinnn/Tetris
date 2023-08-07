@@ -7,7 +7,9 @@ private:
 
     sf::Vector2i ** tiles;
     sf::Vector2i    startOfset;
+    sf::Vector2i    ofset;
     int             rotationState;
+    int             id;
 
 
 public:
