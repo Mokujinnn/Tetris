@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(Tetris LANGUAGES CXX)
+
+
+#устанавливаем путь до корневого каталога SFML
+set(SFML_ROOT_DIR "/usr/lib/SFML-2.6.0")
+
+#Генерируем SFML_DIR на основании SFML_ROOT_DIR
+set(SFML_DIR "${SFML_ROOT_DIR}/lib/cmake/SFML")
+
+find_package(SFML 2.6 REQUIRED 
+    COMPONENTS audio graphics window system)
+
+set(SFML_LIBRARIES 
+    "-lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system")
+
+#Выводим список библиотек
+message(STATUS "SFML libraries: ${SFML_LIBRARIES}")
+
+SET(CMAKE_CXX_COMPILER clang++)
+
+file(GLOB CPPS "src/*.cpp")
+
+add_executable(${PROJECT_NAME} ${CPPS})
+target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+
+set(SFML_STATIC_LIBRARIES TRUE)
+
