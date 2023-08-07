@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 
 
-
 int main()
 {
     srand(time(NULL));
@@ -18,8 +17,8 @@ int main()
     int poleHeight = 15, poleWidth = 10;
     int poleBlocksPadding = 2;
 
-    float blockWidth = 40, blockHeight = 40;
-    sf::Vector2f sizeBlocks(blockWidth, blockHeight);
+    float tileWidth = 40, tileHeight = 40;
+    sf::Vector2f tile(tileWidth, tileHeight);
 
     sf::RectangleShape pole[poleHeight][poleWidth];
 
@@ -27,8 +26,9 @@ int main()
     {
         for(int j = 0; j < poleWidth; j++)
         {
-            pole[i][j].setPosition(sf::Vector2f(blockWidth*j - blockWidth/2 + poleBlocksPadding*j + windowWidth/2 - poleWidth * blockWidth / 2, blockHeight*i - blockHeight/2 + poleBlocksPadding*i + windowHeight/2 - poleHeight * blockHeight / 2)); // Расположение поля на экране
-            pole[i][j].setSize(sizeBlocks);
+            pole[i][j].setPosition(sf::Vector2f(tileWidth*j - tileWidth/2 + poleBlocksPadding*j + windowWidth/2 - poleWidth * tileWidth / 2, 
+            tileHeight*i - tileHeight/2 + poleBlocksPadding*i + windowHeight/2 - poleHeight * tileHeight / 2)); // Расположение поля на экране
+            pole[i][j].setSize(tile);
             pole[i][j].setOutlineThickness(0);
             pole[i][j].setOutlineColor(sf::Color::Cyan);
         }
