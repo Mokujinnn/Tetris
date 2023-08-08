@@ -1,4 +1,5 @@
 #pragma once
+#include "position.hpp"
 #include "SFML/Graphics.hpp"
 
 #define NUM_OF_ROTATIN_STATE 4
@@ -8,7 +9,7 @@ class Block
 {
 private:
 
-    sf::Vector2i ** tiles;
+    Position **     tiles;
     sf::Vector2i    startOfset;
     sf::Vector2i    ofset;
     int             rotationState;
@@ -18,13 +19,13 @@ protected:
 
     Block();
 
-    virtual ~Block();
-
     void setId(int id);
 
-    void setTiles(sf::Vector2i ** tiles);
+    void setTiles(Position ** tiles);
 
-    sf::Vector2i* getTilePositions(int rotationState);
+    Position ** getTiles();
+
+    Position* getTilePositions(int rotationState);
 
     void rotateCW();
 

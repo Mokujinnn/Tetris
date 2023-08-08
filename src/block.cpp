@@ -1,22 +1,16 @@
 #include "include/block.hpp"
-#include "SFML/Graphics.hpp"
-
-
+#include "include/position.hpp"
+#include <iostream>
 
 Block::Block()
 {
-    tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
-    tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+    tiles = new Position * [NUM_OF_ROTATIN_STATE];
+    tiles[0] = new Position [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
     for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
     {
         tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
     }
-}
-
-Block::~Block()
-{
-    delete [] tiles[0];
-    delete [] tiles;
+    
 }
 
 void Block::setId(int id)
@@ -24,7 +18,7 @@ void Block::setId(int id)
     this->id = id;
 }
 
-void Block::setTiles(sf::Vector2i ** tiles)
+void Block::setTiles(Position ** tiles)
 {
     for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
     {
@@ -33,9 +27,22 @@ void Block::setTiles(sf::Vector2i ** tiles)
             this->tiles[i][j] = tiles[i][j];
         }
     }
+    for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
+    {
+        for (int j = 0; j < TILES_IN_FIGURE; j++)
+        {
+            std::cout << tiles[i][j].getRow() << ' ' << tiles[i][j].getCol() << '\n';
+        }
+        std::cout << '\n';
+    }
 }
 
-sf::Vector2i* Block::getTilePositions(int rotationState)
+Position ** Block::getTiles()
+{
+    return this->tiles;
+}
+
+Position* Block::getTilePositions(int rotationState)
 {
     return tiles[rotationState];
 }
