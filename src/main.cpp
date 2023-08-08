@@ -3,13 +3,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "include/grid.hpp"
-
+#include "include/IBlock.hpp"
 
 int main()
 {
     srand(time(NULL));
-
-    
 
     int rows = 20, cols = 10;
     int tilePadding = 2;
@@ -26,7 +24,7 @@ int main()
 
     GameGrid Grid(rows, cols, tile, tilePadding);
     sf::Clock clock;
-    
+
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asMilliseconds();
@@ -44,6 +42,8 @@ int main()
 
         window.display();
     }
+
+    IBlock i;
 
     return 0;
 }
