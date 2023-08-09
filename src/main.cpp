@@ -4,6 +4,7 @@
 
 #include "grid.hpp"
 #include "IBlock.hpp"
+#include "OBlock.hpp"
 
 int main()
 {
@@ -43,7 +44,7 @@ int main()
         window.display();
     }
 
-    IBlock i;
+    OBlock i;
 
     return 0;
 }
