@@ -2,31 +2,29 @@
 #include <ctime>
 #include <SFML/Graphics.hpp>
 
-#include "include/grid.hpp"
-
+#include "grid.hpp"
+#include "IBlock.hpp"
 
 int main()
 {
     srand(time(NULL));
 
-    
-
     int rows = 20, cols = 10;
     int tilePadding = 2;
 
-    sf::Vector2f tile(30, 30);
+    sf::Vector2f tile(35, 35);
     float tileWidth = tile.x, tileHeight = tile.y;
 
     int windowHeight = tilePadding + (tile.x + tilePadding) * rows; 
     int windowWidth  =  tilePadding + (tile.y + tilePadding) * cols;
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Tetris");
 
-    window.setPosition(sf::Vector2i(((int)sf::VideoMode::getDesktopMode().width/2) - windowWidth/2, 
-    ((int)sf::VideoMode::getDesktopMode().height/2) - windowHeight/2)); // Расположение окна на экране
+    window.setPosition(sf::Vector2i((sf::VideoMode::getDesktopMode().width/2) - windowWidth/2, 
+    (sf::VideoMode::getDesktopMode().height/2) - windowHeight/2)); // Расположение окна на экране
 
     GameGrid Grid(rows, cols, tile, tilePadding);
     sf::Clock clock;
-    
+
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asMilliseconds();
@@ -44,6 +42,8 @@ int main()
 
         window.display();
     }
+
+    IBlock i;
 
     return 0;
 }

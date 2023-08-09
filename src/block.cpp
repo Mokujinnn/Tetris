@@ -1,12 +1,50 @@
-#include "include/block.hpp"
-#include "SFML/Graphics.hpp"
-
-#define NUM_OF_ROTATIN_STATE 4
+#include "block.hpp"
+#include <iostream>
 
 Block::Block()
 {
-    startOfset = sf::Vector2i(3, 0);
-    ofset = startOfset;
+    tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
+    tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+    for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
+    {
+        tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
+    }
+    
+}
+
+Block::~Block()
+{
+    delete [] this->tiles[0];
+    delete [] this->tiles;
+}
+
+void Block::setId(int id)
+{
+    this->id = id;
+}
+
+void Block::setTiles(sf::Vector2i ** tiles)
+{
+    for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
+    {
+        for (int j = 0; j < TILES_IN_FIGURE; j++)
+        {
+            this->tiles[i][j] = tiles[i][j];
+        }
+    }
+    for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
+    {
+        for (int j = 0; j < TILES_IN_FIGURE; j++)
+        {
+            std::cout << this->tiles[i][j].x << ' ' << tiles[i][j].y << '\t';
+        }
+        std::cout << '\n';
+    }
+}
+
+sf::Vector2i ** Block::getTiles()
+{
+    return this->tiles;
 }
 
 sf::Vector2i* Block::getTilePositions(int rotationState)
@@ -35,4 +73,14 @@ void Block::move(int rows, int cols)
 {
     ofset.x += rows;
     ofset.y += cols;
+}
+
+void Block::setStartOfset(int row, int col)
+{
+    this->startOfset = sf::Vector2i(row, col);
+}
+
+sf::Vector2i Block::getStartOfset()
+{
+    return this->startOfset;
 }
