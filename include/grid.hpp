@@ -8,14 +8,14 @@ private:
     int                   cols;
     int                   rows;
     float                 tilePadding;
-    sf::Vector2f          tileSize;
+    sf::Vector2i          tileSize;
 
     int **                grid;
     sf::RectangleShape ** tiles;
 
 public:
 
-    GameGrid(int rows, int cols, sf::Vector2f tile, float tilePadding);
+    GameGrid(int rows, int cols, sf::Vector2i tile, float tilePadding);
 
     ~GameGrid();
 
