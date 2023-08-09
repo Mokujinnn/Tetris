@@ -18,9 +18,9 @@ Block::~Block()
     delete [] this->tiles;
 }
 
-void Block::setOfset(sf::Vector2i ofset)
+void Block::setOfset(int row, int col)
 {
-    this->ofset = ofset;
+    this->ofset = sf::Vector2i(row, col);
 }
 
 void Block::setId(int id)

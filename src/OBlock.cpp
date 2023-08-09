@@ -14,4 +14,5 @@ OBlock::OBlock()
     this->setId(2);
 
     this->setStartOfset(0, 4);
+    this->setOfset(0, 4);
 }

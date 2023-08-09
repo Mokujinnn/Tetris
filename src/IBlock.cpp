@@ -15,4 +15,5 @@ IBlock::IBlock()
     this->setId(1);
 
     this->setStartOfset(-1, 3);
+    this->setOfset(-1, 3);
 }

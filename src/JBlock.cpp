@@ -14,4 +14,5 @@ JBlock::JBlock()
     this->setId(7);
 
     this->setStartOfset(0, 3);
+    this->setOfset(0, 3);
 }

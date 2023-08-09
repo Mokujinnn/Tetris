@@ -14,4 +14,5 @@ ZBlock::ZBlock()
     this->setId(3);
 
     this->setStartOfset(0, 3);
+    this->setOfset(0, 3);
 }

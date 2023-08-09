@@ -14,4 +14,5 @@ LBlock::LBlock()
     this->setId(6);
 
     this->setStartOfset(0, 3);
+    this->setOfset(0, 3);
 }

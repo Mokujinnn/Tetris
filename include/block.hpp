@@ -20,7 +20,7 @@ public:
 
     virtual ~Block();
 
-    void setOfset(sf::Vector2i ofset);
+    void setOfset(int row, int col);
 
     void setId(int id);
 

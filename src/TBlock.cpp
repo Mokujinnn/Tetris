@@ -14,4 +14,5 @@ TBlock::TBlock()
     this->setId(5);
 
     this->setStartOfset(0, 3);
+    this->setOfset(0, 3);
 }
