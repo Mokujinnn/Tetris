@@ -8,6 +8,6 @@ public:
 
     IBlock();
 
-    ~IBlock();
+    ~IBlock() {};
 
 };

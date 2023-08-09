@@ -2,8 +2,8 @@
 #include <ctime>
 #include <SFML/Graphics.hpp>
 
-#include "include/grid.hpp"
-#include "include/IBlock.hpp"
+#include "grid.hpp"
+#include "IBlock.hpp"
 
 int main()
 {
@@ -12,7 +12,7 @@ int main()
     int rows = 20, cols = 10;
     int tilePadding = 2;
 
-    sf::Vector2f tile(30, 30);
+    sf::Vector2f tile(35, 35);
     float tileWidth = tile.x, tileHeight = tile.y;
 
     int windowHeight = tilePadding + (tile.x + tilePadding) * rows; 

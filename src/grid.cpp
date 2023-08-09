@@ -1,5 +1,5 @@
 #include "SFML/Graphics.hpp"
-#include "include/grid.hpp"
+#include "grid.hpp"
 
 GameGrid::GameGrid(int rows, int cols,  sf::Vector2f tileSize, float tilePadding)
 {
