@@ -23,6 +23,11 @@ void Block::setId(int id)
     this->id = id;
 }
 
+int Block::getId()
+{
+    return this->id;
+}
+
 void Block::setTiles(sf::Vector2i ** tiles)
 {
     for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)

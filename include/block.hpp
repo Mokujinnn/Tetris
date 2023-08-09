@@ -22,6 +22,8 @@ public:
 
     void setId(int id);
 
+    int getId();
+
     void setTiles(sf::Vector2i ** tiles);
 
     sf::Vector2i ** getTiles();

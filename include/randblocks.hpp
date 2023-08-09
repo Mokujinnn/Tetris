@@ -5,17 +5,15 @@ class RandBlocks
 {
 private:
 
-    Block  nextBlock;
+    Block* nextBlock;
 
     Block* randomBlock();
 
 public:
 
-    RandBlocks() {};
+    RandBlocks();
 
     ~RandBlocks() {};
 
-    Block nextBlock();
-
-    Block getNextBlock();
+    Block* getAndUpdate();
 };

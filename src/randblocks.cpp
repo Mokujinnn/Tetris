@@ -1,5 +1,10 @@
 #include "randblocks.hpp"
 
+RandBlocks::RandBlocks()
+{
+    nextBlock = randomBlock();
+}
+
 Block* RandBlocks::randomBlock()
 {
     int block = rand() % 7;
@@ -20,7 +25,22 @@ Block* RandBlocks::randomBlock()
     case 6:
         return new JBlock;
     default:
-        break;
+        return nullptr;
     }
+}
+
+Block* RandBlocks::getAndUpdate()
+{
+    Block* block = this->nextBlock;
+
+    nextBlock = randomBlock();
+
+    while (block->getId() == nextBlock->getId())
+    {
+        delete nextBlock;
+        nextBlock = randomBlock();
+    }
+
+    return block;
 }
 
