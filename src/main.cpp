@@ -19,8 +19,8 @@ int main()
     int windowWidth  =  tilePadding + (tile.y + tilePadding) * cols;
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Tetris");
 
-    window.setPosition(sf::Vector2i(((int)sf::VideoMode::getDesktopMode().width/2) - windowWidth/2, 
-    ((int)sf::VideoMode::getDesktopMode().height/2) - windowHeight/2)); // Расположение окна на экране
+    window.setPosition(sf::Vector2i((sf::VideoMode::getDesktopMode().width/2) - windowWidth/2, 
+    (sf::VideoMode::getDesktopMode().height/2) - windowHeight/2)); // Расположение окна на экране
 
     GameGrid Grid(rows, cols, tile, tilePadding);
     sf::Clock clock;

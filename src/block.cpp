@@ -1,5 +1,4 @@
 #include "block.hpp"
-#include "position.hpp"
 #include <iostream>
 
 Block::Block()
