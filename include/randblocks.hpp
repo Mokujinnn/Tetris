@@ -13,7 +13,7 @@ public:
 
     RandBlocks();
 
-    ~RandBlocks() {};
+    ~RandBlocks();
 
     Block* getAndUpdate();
 };

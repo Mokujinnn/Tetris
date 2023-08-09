@@ -5,6 +5,11 @@ RandBlocks::RandBlocks()
     nextBlock = randomBlock();
 }
 
+RandBlocks::~RandBlocks()
+{
+    delete nextBlock;
+}
+
 Block* RandBlocks::randomBlock()
 {
     int block = rand() % 7;
