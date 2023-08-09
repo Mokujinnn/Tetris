@@ -20,6 +20,8 @@ public:
 
     virtual ~Block();
 
+    void setOfset(sf::Vector2i ofset);
+
     void setId(int id);
 
     int getId();

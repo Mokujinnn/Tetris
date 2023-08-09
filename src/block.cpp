@@ -5,17 +5,22 @@ Block::Block()
 {
     tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
     tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+
     for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
     {
         tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
     }
-    
 }
 
 Block::~Block()
 {
     delete [] this->tiles[0];
     delete [] this->tiles;
+}
+
+void Block::setOfset(sf::Vector2i ofset)
+{
+    this->ofset = ofset;
 }
 
 void Block::setId(int id)
