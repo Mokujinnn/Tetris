@@ -14,13 +14,15 @@ private:
     int             rotationState;
     int             id;
 
-protected:
+public:
 
     Block();
 
     virtual ~Block();
 
     void setId(int id);
+
+    int getId();
 
     void setTiles(sf::Vector2i ** tiles);
 
