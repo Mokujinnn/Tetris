@@ -14,7 +14,7 @@ private:
     int             rotationState;
     int             id;
 
-protected:
+public:
 
     Block();
 
