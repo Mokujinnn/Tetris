@@ -10,6 +10,8 @@ Block::Block()
     {
         tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
     }
+
+    this->rotationState = 0;
 }
 
 Block::~Block()
