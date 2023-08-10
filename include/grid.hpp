@@ -8,14 +8,14 @@ private:
     int                   cols;
     int                   rows;
     float                 tilePadding;
-    sf::Vector2i          tileSize;
+    sf::Vector2f          tileSize;
 
     int **                grid;
     sf::RectangleShape ** tiles;
 
 public:
 
-    GameGrid(int rows, int cols, sf::Vector2i tile, float tilePadding);
+    GameGrid(int rows, int cols, sf::Vector2f tile, float tilePadding);
 
     ~GameGrid();
 
@@ -28,4 +28,8 @@ public:
     bool isRowEmpty(int row);
 
     void drawGrid(sf::RenderWindow &window);
+
+    int getTileId(int row, int col);
+
+    void setTileId(int row, int col, int id);
 };

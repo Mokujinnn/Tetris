@@ -35,6 +35,16 @@ int Block::getId()
     return this->id;
 }
 
+int Block::getRotationState()
+{
+    return this->rotationState;
+}
+
+void Block::setRotationState(int rotationState)
+{
+    this->rotationState = rotationState;
+}
+
 void Block::setTiles(sf::Vector2i ** tiles)
 {
     for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)

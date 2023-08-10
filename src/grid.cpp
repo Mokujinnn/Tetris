@@ -1,7 +1,7 @@
 #include "SFML/Graphics.hpp"
 #include "grid.hpp"
 
-GameGrid::GameGrid(int rows, int cols,  sf::Vector2i tileSize, float tilePadding)
+GameGrid::GameGrid(int rows, int cols,  sf::Vector2f tileSize, float tilePadding)
 {
     this->cols        = cols;
     this->rows        = rows;
@@ -91,4 +91,14 @@ void GameGrid::drawGrid(sf::RenderWindow &window)
             window.draw(tiles[i][j]);
         }
     }       
+}
+
+int GameGrid::getTileId(int row, int col)
+{
+    return grid[row][col];
+}
+
+void GameGrid::setTileId(int row, int col, int id)
+{
+    grid[row][col] = id;
 }

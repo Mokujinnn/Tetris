@@ -7,12 +7,28 @@ class GameState
 private:
 
     Block*     CurrentBlock;
-    GameGrid   Grid;
-    RandBlocks RandBlocks;
+    GameGrid*  Grid;
+    RandBlocks RandBlock;
     bool       gameOver;
 
 public:
 
-    GameState(int rows, int cols, sf::Vector2i tileSize, int tilePadding);
+    GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding);
+
+    ~GameState();
+
+    bool isLegalPosition();
+
+    void rotateBlockCW();
+
+    void rotateBlockCCW();
+
+    void moveBlockLeft();
+
+    void moveBlockRight();
+
+    bool isGameOver();
+
+    void placeBlock();
 
 };
