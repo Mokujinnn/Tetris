@@ -27,6 +27,8 @@ public:
 
     void moveBlockRight();
 
+    void moveBlockDown();
+
     bool isGameOver();
 
     void placeBlock();

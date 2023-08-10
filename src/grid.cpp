@@ -102,3 +102,40 @@ void GameGrid::setTileId(int row, int col, int id)
 {
     grid[row][col] = id;
 }
+
+void GameGrid::clearRow(int row)
+{
+    for (int i = 0; i < this->cols; i++)
+    {
+        grid[row][i] = 0;
+    }
+}
+
+void GameGrid::moveRowDown(int row, int numRows)
+{
+    for(int i = 0; i < this->cols; i++)
+    {
+        grid[row + numRows][i] = grid[row][i];
+        grid[row][i] = 0;
+    }
+}
+
+int GameGrid::clearFullRows()
+{
+    int cleared = 0;
+
+    for (int i = this->rows - 1; i>=0; i--)
+    {
+        if (isRowFull(i))
+        {
+            clearRow(i);
+            cleared++;
+        }
+        else if (cleared > 0)
+        {
+            moveRowDown(i, cleared);
+        }
+    }
+
+    return cleared;
+}

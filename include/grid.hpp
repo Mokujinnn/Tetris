@@ -32,4 +32,10 @@ public:
     int getTileId(int row, int col);
 
     void setTileId(int row, int col, int id);
+
+    void clearRow(int row);
+
+    void moveRowDown(int row, int numRows);
+
+    int clearFullRows();
 };

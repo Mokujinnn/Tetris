@@ -69,9 +69,9 @@ sf::Vector2i ** Block::getTiles()
     return this->tiles;
 }
 
-sf::Vector2i* Block::getTilePositions(int rotationState)
+sf::Vector2i* Block::getTilePositions()
 {
-    return tiles[rotationState];
+    return tiles[this->rotationState];
 }
 
 void Block::rotateCW()

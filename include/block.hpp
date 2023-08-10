@@ -34,7 +34,7 @@ public:
 
     sf::Vector2i ** getTiles();
 
-    sf::Vector2i* getTilePositions(int rotationState);
+    sf::Vector2i* getTilePositions();
 
     void rotateCW();
 
