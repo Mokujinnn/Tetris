@@ -33,4 +33,6 @@ public:
 
     void placeBlock();
 
+    void draw(sf::RenderWindow &window);
+
 };

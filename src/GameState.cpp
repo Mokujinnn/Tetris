@@ -103,3 +103,8 @@ void GameState::moveBlockDown()
         placeBlock();
     }
 }
+
+void GameState::draw(sf::RenderWindow &window)
+{
+    this->Grid->drawGrid(window);
+}
