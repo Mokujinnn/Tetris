@@ -88,6 +88,15 @@ void GameGrid::drawGrid(sf::RenderWindow &window)
     {
         for (int j = 0; j < cols; j++)
         {
+            if (this->grid[i][j] != 0)
+            {
+                this->tiles[i][j].setFillColor(sf::Color::Red);
+            }
+            else 
+            {
+                this->tiles[i][j].setFillColor(sf::Color::White);
+            }
+
             window.draw(tiles[i][j]);
         }
     }       
