@@ -82,8 +82,6 @@ bool GameGrid::isRowEmpty(int row)
 
 void GameGrid::drawGrid(sf::RenderWindow &window)
 {
-
-    window.clear();
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < cols; j++)
