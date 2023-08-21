@@ -10,6 +10,7 @@ GameState::GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding)
 GameState::~GameState()
 {
     delete Grid;
+    delete CurrentBlock;
 }
 
 bool GameState::isLegalPosition()
@@ -89,6 +90,7 @@ void GameState::placeBlock() //Размещение блока на сетку
     }
     else
     {
+        delete CurrentBlock;
         CurrentBlock = RandBlock.getAndUpdate();
     }
 }
