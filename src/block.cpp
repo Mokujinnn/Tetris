@@ -35,6 +35,16 @@ int Block::getId()
     return this->id;
 }
 
+int Block::getRotationState()
+{
+    return this->rotationState;
+}
+
+void Block::setRotationState(int rotationState)
+{
+    this->rotationState = rotationState;
+}
+
 void Block::setTiles(sf::Vector2i ** tiles)
 {
     for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
@@ -59,9 +69,21 @@ sf::Vector2i ** Block::getTiles()
     return this->tiles;
 }
 
-sf::Vector2i* Block::getTilePositions(int rotationState)
+sf::Vector2i* Block::getTilesPositions()
 {
-    return tiles[rotationState];
+    sf::Vector2i* t = tiles[this->rotationState];
+
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        t[i] += ofset;
+    }
+
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        std::cout << t[i].x << ' ' << t[i].y << '\n';
+    }
+
+    return t;
 }
 
 void Block::rotateCW()

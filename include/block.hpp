@@ -26,11 +26,15 @@ public:
 
     int getId();
 
+    int getRotationState();
+
+    void setRotationState(int rotationState);
+
     void setTiles(sf::Vector2i ** tiles);
 
     sf::Vector2i ** getTiles();
 
-    sf::Vector2i* getTilePositions(int rotationState);
+    sf::Vector2i* getTilesPositions();
 
     void rotateCW();
 
