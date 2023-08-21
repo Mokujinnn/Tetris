@@ -69,9 +69,21 @@ sf::Vector2i ** Block::getTiles()
     return this->tiles;
 }
 
-sf::Vector2i* Block::getTilePositions()
+sf::Vector2i* Block::getTilesPositions()
 {
-    return tiles[this->rotationState];
+    sf::Vector2i* t = tiles[this->rotationState];
+
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        t[i] += ofset;
+    }
+
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        std::cout << t[i].x << ' ' << t[i].y << '\n';
+    }
+
+    return t;
 }
 
 void Block::rotateCW()

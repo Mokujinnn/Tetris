@@ -14,7 +14,7 @@ GameState::~GameState()
 
 bool GameState::isLegalPosition()
 {
-    sf::Vector2i* tiles = CurrentBlock->getTilePositions();
+    sf::Vector2i* tiles = CurrentBlock->getTilesPositions();
 
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
@@ -74,7 +74,7 @@ bool GameState::isGameOver()
 
 void GameState::placeBlock() //Размещение блока на сетку
 {
-    sf::Vector2i* t = CurrentBlock->getTilePositions();
+    sf::Vector2i* t = CurrentBlock->getTilesPositions();
 
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
