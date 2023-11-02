@@ -1,7 +1,7 @@
 #include "block.hpp"
 #include <iostream>
 
-Block::Block()
+Block::Block(const sf::Vector2f& tileSize)
 {
     tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
     tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
@@ -12,6 +12,14 @@ Block::Block()
     }
 
     this->rotationState = 0;
+
+    this->rects = new sf::RectangleShape[TILES_IN_FIGURE];
+
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        this->rects[i].setSize(tileSize);
+        this->rects[i].setFillColor(sf::Color::Red);
+    }
 }
 
 Block::Block(Block const & block) : startOfset(block.startOfset), ofset(block.ofset), rotationState(block.rotationState), id(block.id)
@@ -31,43 +39,52 @@ Block::Block(Block const & block) : startOfset(block.startOfset), ofset(block.of
             this->tiles[i][j] = block.tiles[i][j];
         }
     }
-}
 
-Block & Block::operator=(Block const & block)
-{
-    if (this != &block)
+    this->rects = new sf::RectangleShape[TILES_IN_FIGURE];
+
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
-        delete [] this->tiles[0];
-        delete [] this->tiles;
-
-        this->startOfset    = block.startOfset;
-        this->ofset         = block.ofset;
-        this->rotationState = block.rotationState;
-        this->id            = block.id; 
-
-        this->tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
-        this->tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
-
-        for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
-        {
-            tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
-        }
-        for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
-        {
-            for (int j = 0; j < TILES_IN_FIGURE; j++)
-            {
-                this->tiles[i][j] = block.tiles[i][j];
-            }
-        }
+        this->rects[i] = block.rects[i];
     }
-
-    return *this;
 }
+
+//Block Block::operator=(const Block& block)
+//{
+//    if (this != &block)
+//    {
+//        delete [] this->tiles[0];
+//        delete [] this->tiles;
+//
+//        this->startOfset    = block.startOfset;
+//        this->ofset         = block.ofset;
+//        this->rotationState = block.rotationState;
+//        this->id            = block.id; 
+//
+//        this->tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
+//        this->tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+//
+//        for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
+//        {
+//            tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
+//        }
+//        for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
+//        {
+//            for (int j = 0; j < TILES_IN_FIGURE; j++)
+//            {
+//                this->tiles[i][j] = block.tiles[i][j];
+//            }
+//        }
+//    }
+//
+//    return *this;
+//}
 
 Block::~Block()
 {
-    delete [] this->tiles[0];
-    delete [] this->tiles;
+    delete[] this->tiles[0];
+    delete[] this->tiles;
+
+    delete[] this->rects;
 }
 
 void Block::setOfset(int row, int col)
@@ -93,6 +110,11 @@ int Block::getRotationState()
 void Block::setRotationState(int rotationState)
 {
     this->rotationState = rotationState;
+}
+
+void Block::reset()
+{
+    this->ofset = this->startOfset;
 }
 
 void Block::setTiles(sf::Vector2i ** tiles)
@@ -171,4 +193,24 @@ void Block::setStartOfset(int row, int col)
 sf::Vector2i Block::getStartOfset()
 {
     return this->startOfset;
+}
+
+void Block::updateRects(const sf::Vector2f& tileSize, int tilePadding)
+{
+    sf::Vector2i* pos = getTilesPositions();
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        this->rects[i].setPosition(tilePadding + tileSize.y * pos[i].y + tilePadding * pos[i].y,
+                                   tilePadding + tileSize.x * pos[i].x + tilePadding * pos[i].x);
+    }
+
+    delete[] pos;
+}
+
+void Block::drawBlock(sf::RenderWindow& window)
+{
+    for (int i = 0; i < TILES_IN_FIGURE; i++)
+    {
+        window.draw(this->rects[i]);
+    }
 }

@@ -27,11 +27,15 @@ public:
 
     bool isRowEmpty(int row);
 
-    void drawGrid(sf::RenderWindow *window);
+    void drawGrid(sf::RenderWindow &window);
 
     int getTileId(int row, int col);
 
     void setTileId(int row, int col, int id);
+
+    const sf::Vector2f& getTileSize();
+
+    float getTilePadding();
 
     void clearRow(int row);
 

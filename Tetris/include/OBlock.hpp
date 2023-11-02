@@ -5,7 +5,7 @@ class OBlock : public Block
 {
 public:
 
-    OBlock();
+    OBlock(const sf::Vector2f& tileSize);
 
     ~OBlock() {};
 

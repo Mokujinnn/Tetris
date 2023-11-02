@@ -5,7 +5,7 @@ class TBlock : public Block
 {
 public:
 
-    TBlock();
+    TBlock(const sf::Vector2f& tileSize);
 
     ~TBlock() {};
 

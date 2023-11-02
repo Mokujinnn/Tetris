@@ -3,8 +3,8 @@
 GameState::GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding)
 {
     this->Grid = new GameGrid(rows, cols, tileSize, tilePadding);
-    this->RandBlock = RandBlocks();
-    this->CurrentBlock = RandBlock.getAndUpdate();
+    this->RandBlock = new RandBlocks(tileSize);
+    this->CurrentBlock = RandBlock->getAndUpdate();
 }
 
 GameState::~GameState()
@@ -38,6 +38,8 @@ void GameState::rotateBlockCW()
     {
         CurrentBlock.rotateCCW();
     }
+
+    CurrentBlock.updateRects(this->Grid->getTileSize(), this->Grid->getTilePadding());
 }
 
 void GameState::rotateBlockCCW()
@@ -48,6 +50,8 @@ void GameState::rotateBlockCCW()
     {
         CurrentBlock.rotateCW();
     }
+
+    CurrentBlock.updateRects(this->Grid->getTileSize(), this->Grid->getTilePadding());
 }
 
 void GameState::moveBlockLeft()
@@ -58,6 +62,8 @@ void GameState::moveBlockLeft()
     {
         CurrentBlock.move(0, 1);
     }
+
+    CurrentBlock.updateRects(this->Grid->getTileSize(), this->Grid->getTilePadding());
 }
 
 void GameState::moveBlockRight()
@@ -68,6 +74,8 @@ void GameState::moveBlockRight()
     {
         CurrentBlock.move(0, -1);
     }
+
+    CurrentBlock.updateRects(this->Grid->getTileSize(), this->Grid->getTilePadding());
 }
 
 bool GameState::isGameOver()
@@ -95,7 +103,8 @@ void GameState::placeBlock() //Размещение блока на сетку
     }
     else
     {
-        CurrentBlock = RandBlock.getAndUpdate();
+        CurrentBlock = RandBlock->getAndUpdate();
+        CurrentBlock.reset();
     }
 }
 
@@ -105,12 +114,15 @@ void GameState::moveBlockDown()
 
     if (!isLegalPosition())
     {
-        CurrentBlock.move(-1, 0); // CurrentBlock.move(0, -1);
+        CurrentBlock.move(-1, 0);
         placeBlock();
     }
+
+    CurrentBlock.updateRects(this->Grid->getTileSize(), this->Grid->getTilePadding());
 }
 
-void GameState::draw(sf::RenderWindow *window)
+void GameState::draw(sf::RenderWindow &window)
 {
-    this->Grid->drawGrid(window);
+    Grid->drawGrid(window);
+    CurrentBlock.drawBlock(window);
 }

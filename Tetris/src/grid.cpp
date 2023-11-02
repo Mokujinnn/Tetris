@@ -80,7 +80,7 @@ bool GameGrid::isRowEmpty(int row)
     return true;
 }
 
-void GameGrid::drawGrid(sf::RenderWindow *window)
+void GameGrid::drawGrid(sf::RenderWindow &window)
 {
     for (int i = 0; i < rows; i++)
     {
@@ -95,7 +95,7 @@ void GameGrid::drawGrid(sf::RenderWindow *window)
                 this->tiles[i][j].setFillColor(sf::Color::White);
             }
 
-            window->draw(tiles[i][j]);
+            window.draw(tiles[i][j]);
         }
     }       
 }
@@ -108,6 +108,16 @@ int GameGrid::getTileId(int row, int col)
 void GameGrid::setTileId(int row, int col, int id)
 {
     grid[row][col] = id;
+}
+
+const sf::Vector2f& GameGrid::getTileSize()
+{
+    return this->tileSize;
+}
+
+float GameGrid::getTilePadding()
+{
+    return this->tilePadding;
 }
 
 void GameGrid::clearRow(int row)

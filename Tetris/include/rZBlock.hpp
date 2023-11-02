@@ -5,7 +5,7 @@ class rZBlock : public Block
 {
 public:
 
-    rZBlock();
+    rZBlock(const sf::Vector2f& tileSize);
 
     ~rZBlock() {};
 

@@ -55,6 +55,14 @@ int main()
                 {
                     Game.moveBlockDown();
                 }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Comma))
+                {
+                    Game.rotateBlockCCW();
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Period))
+                {
+                    Game.rotateBlockCW();
+                }
             }
         }
 
@@ -65,7 +73,7 @@ int main()
         }
 
         window.clear();
-        Game.draw(&window);
+        Game.draw(window);
         window.display();
     }
 

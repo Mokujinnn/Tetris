@@ -5,7 +5,7 @@ class ZBlock : public Block
 {
 public:
 
-    ZBlock();
+    ZBlock(const sf::Vector2f& tileSize);
 
     ~ZBlock() {};
 

@@ -5,7 +5,7 @@ class LBlock : public Block
 {
 public:
 
-    LBlock();
+    LBlock(const sf::Vector2f& tileSize);
 
     ~LBlock() {};
 

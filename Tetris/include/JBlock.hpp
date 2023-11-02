@@ -5,7 +5,7 @@ class JBlock : public Block
 {
 public:
 
-    JBlock();
+    JBlock(const sf::Vector2f& tileSize);
 
     ~JBlock() {};
 

@@ -1,43 +1,47 @@
 #include "randblocks.hpp"
 
-RandBlocks::RandBlocks()
+RandBlocks::RandBlocks(const sf::Vector2f& tileSize)
 {
-    nextBlock = randomBlock();
+    this->blocks = new Block*[7];
+
+    this->blocks[0] = new IBlock(tileSize);
+    this->blocks[1] = new OBlock(tileSize);
+    this->blocks[2] = new ZBlock(tileSize);
+    this->blocks[3] = new rZBlock(tileSize);
+    this->blocks[4] = new TBlock(tileSize);
+    this->blocks[5] = new LBlock(tileSize);
+    this->blocks[6] = new JBlock(tileSize);
+
+    nextBlock = this->blocks[rand() % 7];
 }
 
 RandBlocks::~RandBlocks()
 {
-
+    for (int i = 0; i < 7; i++)
+    {
+        delete this->blocks[i];
+    }
+    delete[] this->blocks;
 }
 
-Block RandBlocks::randomBlock()
+Block* RandBlocks::randomBlock()
 {
     int i = rand() % 7;
 
-    IBlock a;
-    OBlock b;
-    ZBlock c;
-    rZBlock d;
-    TBlock e;
-    LBlock f;
-    JBlock g;
-
-    Block blocks[] = {a, b, c, d, e, f, g};
-
-    return blocks[i];    
+    return this->blocks[i];    
 }
 
-Block RandBlocks::getAndUpdate()
+Block& RandBlocks::getAndUpdate()
 {
-    Block block = nextBlock;
+    Block* block = nextBlock;
 
     nextBlock = randomBlock();
 
-    while (block.getId() == nextBlock.getId())
+    while (block->getId() == nextBlock->getId())
     {
         nextBlock = randomBlock();
     }
 
-    return block;
+    return *block;
 }
 

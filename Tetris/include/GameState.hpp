@@ -6,10 +6,10 @@ class GameState
 {
 private:
 
-    Block      CurrentBlock;
-    GameGrid*  Grid;
-    RandBlocks RandBlock;
-    bool       gameOver;
+    Block       CurrentBlock;
+    GameGrid*   Grid;
+    RandBlocks* RandBlock;
+    bool        gameOver;
 
 public:
 
@@ -33,6 +33,6 @@ public:
 
     void placeBlock();
 
-    void draw(sf::RenderWindow *window);
+    void draw(sf::RenderWindow &window);
 
 };

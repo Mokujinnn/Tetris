@@ -1,19 +1,23 @@
 #pragma once
+#include <vector>
+
 #include "blocks.hpp"
 
 class RandBlocks
 {
 private:
 
-    Block nextBlock;
+    Block*  nextBlock;
+    Block** blocks;
 
-    Block randomBlock();
+    Block* randomBlock();
 
 public:
+    //RandBlocks() {};
 
-    RandBlocks();
+    RandBlocks(const sf::Vector2f& tileSize);
 
     ~RandBlocks();
 
-    Block getAndUpdate();
+    Block& getAndUpdate();
 };

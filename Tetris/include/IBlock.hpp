@@ -6,7 +6,7 @@ class IBlock : public Block
 {
 public:
 
-    IBlock();
+    IBlock(const sf::Vector2f& tileSize);
 
     ~IBlock() {};
 
