@@ -9,7 +9,7 @@ int main()
     srand(time(NULL));
 
     int rows = 20, cols = 10;
-    int tilePadding = 2;
+    float tilePadding = 2;
 
     sf::Vector2f tile(35, 35);
 

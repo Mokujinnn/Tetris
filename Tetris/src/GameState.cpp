@@ -1,6 +1,6 @@
 #include "GameState.hpp"
 
-GameState::GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding) : 
+GameState::GameState(int rows, int cols, sf::Vector2f tileSize, float tilePadding) : 
 Grid(new GameGrid(rows, cols, tileSize, tilePadding)),
 RandBlock(new RandBlocks(tileSize)),
 gameOver(false),

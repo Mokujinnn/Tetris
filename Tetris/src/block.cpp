@@ -196,7 +196,7 @@ sf::Vector2i Block::getStartOfset()
     return this->startOfset;
 }
 
-void Block::updateRects(const sf::Vector2f& tileSize, int tilePadding)
+void Block::updateRects(const sf::Vector2f& tileSize, float tilePadding)
 {
     sf::Vector2i* pos = getTilesPositions();
     for (int i = 0; i < TILES_IN_FIGURE; i++)

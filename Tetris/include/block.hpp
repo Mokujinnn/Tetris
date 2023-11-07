@@ -54,7 +54,7 @@ public:
 
     sf::Vector2i getStartOfset();
 
-    void updateRects(const sf::Vector2f& tileSize, int tilePadding);
+    void updateRects(const sf::Vector2f& tileSize, float tilePadding);
 
     void drawBlock(sf::RenderWindow& window);
 };

@@ -13,7 +13,7 @@ private:
 
 public:
 
-    GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding);
+    GameState(int rows, int cols, sf::Vector2f tileSize, float tilePadding);
 
     ~GameState();
 
