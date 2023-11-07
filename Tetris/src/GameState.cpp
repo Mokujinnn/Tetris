@@ -12,6 +12,7 @@ CurrentBlock(tileSize)
 GameState::~GameState()
 {
     delete Grid;
+    delete RandBlock;
 }
 
 bool GameState::isLegalPosition()
