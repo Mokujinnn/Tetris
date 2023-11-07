@@ -16,7 +16,7 @@ int main()
     float tileWidth = tile.x, tileHeight = tile.y;
 
     int windowHeight = tilePadding + (tile.x + tilePadding) * rows; 
-    int windowWidth  =  tilePadding + (tile.y + tilePadding) * cols;
+    int windowWidth  = tilePadding + (tile.y + tilePadding) * cols;
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Tetris");
 
     window.setPosition(sf::Vector2i((sf::VideoMode::getDesktopMode().width/2) - windowWidth/2, 
@@ -25,7 +25,6 @@ int main()
     GameState Game(rows, cols, tile, tilePadding);
 
     sf::Clock clock;
-
     float t = 0;
 
     while (window.isOpen())

@@ -1,9 +1,11 @@
 #include "GameState.hpp"
 
-GameState::GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding)
+GameState::GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding) : 
+Grid(new GameGrid(rows, cols, tileSize, tilePadding)),
+RandBlock(new RandBlocks(tileSize)),
+gameOver(false),
+CurrentBlock(tileSize)
 {
-    this->Grid = new GameGrid(rows, cols, tileSize, tilePadding);
-    this->RandBlock = new RandBlocks(tileSize);
     this->CurrentBlock = RandBlock->getAndUpdate();
 }
 

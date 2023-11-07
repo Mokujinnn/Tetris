@@ -19,6 +19,7 @@ Block::Block(const sf::Vector2f& tileSize)
     {
         this->rects[i].setSize(tileSize);
         this->rects[i].setFillColor(sf::Color::Red);
+        this->rects[i].setPosition(-100, -100);
     }
 }
 
@@ -153,11 +154,11 @@ sf::Vector2i* Block::getTilesPositions()
         block[i] += ofset;
     }
 
-    for (int i = 0; i < TILES_IN_FIGURE; i++)
+   /* for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
         std::cout << block[i].x << ' ' << block[i].y << '\n';
     }
-    std::cout << "----------------------\n";
+    std::cout << "----------------------\n";*/
 
     return block;
 }
