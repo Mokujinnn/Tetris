@@ -15,12 +15,12 @@ int main()
 
     float tileWidth = tile.x, tileHeight = tile.y;
 
-    int windowHeight = tilePadding + (tile.x + tilePadding) * rows; 
-    int windowWidth  = tilePadding + (tile.y + tilePadding) * cols;
+    int windowHeight = tilePadding + (tile.x + tilePadding) * rows;
+    int windowWidth = tilePadding + (tile.y + tilePadding) * cols;
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Tetris");
 
-    window.setPosition(sf::Vector2i((sf::VideoMode::getDesktopMode().width/2) - windowWidth/2, 
-    (sf::VideoMode::getDesktopMode().height/2) - windowHeight/2)); // Расположение окна на экране
+    window.setPosition(sf::Vector2i((sf::VideoMode::getDesktopMode().width / 2) - windowWidth / 2,
+                                    (sf::VideoMode::getDesktopMode().height / 2) - windowHeight / 2)); // Расположение окна на экране
 
     GameState Game(rows, cols, tile, tilePadding);
 
@@ -65,7 +65,7 @@ int main()
             }
         }
 
-        if(t > 1)
+        if (t > 1)
         {
             t -= 1;
             Game.moveBlockDown();

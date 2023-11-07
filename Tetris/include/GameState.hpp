@@ -5,14 +5,12 @@
 class GameState
 {
 private:
-
     Block       CurrentBlock;
-    GameGrid*   Grid;
-    RandBlocks* RandBlock;
+    GameGrid   *Grid;
+    RandBlocks *RandBlock;
     bool        gameOver;
 
 public:
-
     GameState(int rows, int cols, sf::Vector2f tileSize, float tilePadding);
 
     ~GameState();
@@ -34,5 +32,4 @@ public:
     void placeBlock();
 
     void draw(sf::RenderWindow &window);
-
 };

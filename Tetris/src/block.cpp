@@ -1,10 +1,10 @@
 #include "block.hpp"
 #include <iostream>
 
-Block::Block(const sf::Vector2f& tileSize)
+Block::Block(const sf::Vector2f &tileSize)
 {
-    tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
-    tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+    tiles = new sf::Vector2i *[NUM_OF_ROTATIN_STATE];
+    tiles[0] = new sf::Vector2i[NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
 
     for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
     {
@@ -23,10 +23,10 @@ Block::Block(const sf::Vector2f& tileSize)
     }
 }
 
-Block::Block(Block const & block) : startOfset(block.startOfset), ofset(block.ofset), rotationState(block.rotationState), id(block.id)
+Block::Block(Block const &block) : startOfset(block.startOfset), ofset(block.ofset), rotationState(block.rotationState), id(block.id)
 {
-    this->tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
-    this->tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+    this->tiles = new sf::Vector2i *[NUM_OF_ROTATIN_STATE];
+    this->tiles[0] = new sf::Vector2i[NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
 
     for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
     {
@@ -49,20 +49,20 @@ Block::Block(Block const & block) : startOfset(block.startOfset), ofset(block.of
     }
 }
 
-Block& Block::operator=(const Block& block)
+Block &Block::operator=(const Block &block)
 {
     if (this != &block)
     {
-        delete [] this->tiles[0];
-        delete [] this->tiles;
+        delete[] this->tiles[0];
+        delete[] this->tiles;
 
-        this->startOfset    = block.startOfset;
-        this->ofset         = block.ofset;
+        this->startOfset = block.startOfset;
+        this->ofset = block.ofset;
         this->rotationState = block.rotationState;
-        this->id            = block.id; 
+        this->id = block.id;
 
-        this->tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
-        this->tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+        this->tiles = new sf::Vector2i *[NUM_OF_ROTATIN_STATE];
+        this->tiles[0] = new sf::Vector2i[NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
 
         for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
         {
@@ -118,7 +118,7 @@ void Block::reset()
     this->ofset = this->startOfset;
 }
 
-void Block::setTiles(sf::Vector2i ** tiles)
+void Block::setTiles(sf::Vector2i **tiles)
 {
     for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
     {
@@ -137,28 +137,28 @@ void Block::setTiles(sf::Vector2i ** tiles)
     // }
 }
 
-sf::Vector2i ** Block::getTiles()
+sf::Vector2i **Block::getTiles()
 {
     return this->tiles;
 }
 
-sf::Vector2i* Block::getTilesPositions()
+sf::Vector2i *Block::getTilesPositions()
 {
-    sf::Vector2i* t = tiles[this->rotationState];
+    sf::Vector2i *t = tiles[this->rotationState];
 
-    sf::Vector2i* block = new sf::Vector2i[TILES_IN_FIGURE];
-    
+    sf::Vector2i *block = new sf::Vector2i[TILES_IN_FIGURE];
+
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
         block[i] = t[i];
         block[i] += ofset;
     }
 
-   /* for (int i = 0; i < TILES_IN_FIGURE; i++)
-    {
-        std::cout << block[i].x << ' ' << block[i].y << '\n';
-    }
-    std::cout << "----------------------\n";*/
+    /* for (int i = 0; i < TILES_IN_FIGURE; i++)
+     {
+         std::cout << block[i].x << ' ' << block[i].y << '\n';
+     }
+     std::cout << "----------------------\n";*/
 
     return block;
 }
@@ -196,9 +196,9 @@ sf::Vector2i Block::getStartOfset()
     return this->startOfset;
 }
 
-void Block::updateRects(const sf::Vector2f& tileSize, float tilePadding)
+void Block::updateRects(const sf::Vector2f &tileSize, float tilePadding)
 {
-    sf::Vector2i* pos = getTilesPositions();
+    sf::Vector2i *pos = getTilesPositions();
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
         this->rects[i].setPosition(tilePadding + tileSize.y * pos[i].y + tilePadding * pos[i].y,
@@ -208,7 +208,7 @@ void Block::updateRects(const sf::Vector2f& tileSize, float tilePadding)
     delete[] pos;
 }
 
-void Block::drawBlock(sf::RenderWindow& window)
+void Block::drawBlock(sf::RenderWindow &window)
 {
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {

@@ -7,22 +7,21 @@
 class Block
 {
 private:
-
-    sf::Vector2i **     tiles;
+    sf::Vector2i      **tiles;
     sf::Vector2i        startOfset;
     sf::Vector2i        ofset;
-    sf::RectangleShape* rects;
+    sf::RectangleShape *rects;
     int                 rotationState;
     int                 id;
 
 public:
-    Block() {};
+    Block(){};
 
-    Block(const sf::Vector2f& tileSize);
+    Block(const sf::Vector2f &tileSize);
 
-    Block(const Block & block);
+    Block(const Block &block);
 
-    Block& operator=(const Block& block);
+    Block &operator=(const Block &block);
 
     virtual ~Block();
 
@@ -36,11 +35,11 @@ public:
 
     void setRotationState(int rotationState);
 
-    void setTiles(sf::Vector2i ** tiles);
+    void setTiles(sf::Vector2i **tiles);
 
-    sf::Vector2i ** getTiles();
+    sf::Vector2i **getTiles();
 
-    sf::Vector2i* getTilesPositions();
+    sf::Vector2i *getTilesPositions();
 
     void rotateCW();
 
@@ -54,7 +53,7 @@ public:
 
     sf::Vector2i getStartOfset();
 
-    void updateRects(const sf::Vector2f& tileSize, float tilePadding);
+    void updateRects(const sf::Vector2f &tileSize, float tilePadding);
 
-    void drawBlock(sf::RenderWindow& window);
+    void drawBlock(sf::RenderWindow &window);
 };
