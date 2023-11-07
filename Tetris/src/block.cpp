@@ -49,36 +49,36 @@ Block::Block(Block const & block) : startOfset(block.startOfset), ofset(block.of
     }
 }
 
-//Block Block::operator=(const Block& block)
-//{
-//    if (this != &block)
-//    {
-//        delete [] this->tiles[0];
-//        delete [] this->tiles;
-//
-//        this->startOfset    = block.startOfset;
-//        this->ofset         = block.ofset;
-//        this->rotationState = block.rotationState;
-//        this->id            = block.id; 
-//
-//        this->tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
-//        this->tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
-//
-//        for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
-//        {
-//            tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
-//        }
-//        for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
-//        {
-//            for (int j = 0; j < TILES_IN_FIGURE; j++)
-//            {
-//                this->tiles[i][j] = block.tiles[i][j];
-//            }
-//        }
-//    }
-//
-//    return *this;
-//}
+Block& Block::operator=(const Block& block)
+{
+    if (this != &block)
+    {
+        delete [] this->tiles[0];
+        delete [] this->tiles;
+
+        this->startOfset    = block.startOfset;
+        this->ofset         = block.ofset;
+        this->rotationState = block.rotationState;
+        this->id            = block.id; 
+
+        this->tiles = new sf::Vector2i * [NUM_OF_ROTATIN_STATE];
+        this->tiles[0] = new sf::Vector2i [NUM_OF_ROTATIN_STATE * TILES_IN_FIGURE];
+
+        for (int i = 1; i < NUM_OF_ROTATIN_STATE; i++)
+        {
+            tiles[i] = tiles[i - 1] + TILES_IN_FIGURE;
+        }
+        for (int i = 0; i < NUM_OF_ROTATIN_STATE; i++)
+        {
+            for (int j = 0; j < TILES_IN_FIGURE; j++)
+            {
+                this->tiles[i][j] = block.tiles[i][j];
+            }
+        }
+    }
+
+    return *this;
+}
 
 Block::~Block()
 {

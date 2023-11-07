@@ -22,7 +22,7 @@ public:
 
     Block(const Block & block);
 
-   /* Block operator=(const Block& block);*/
+    Block& operator=(const Block& block);
 
     virtual ~Block();
 
