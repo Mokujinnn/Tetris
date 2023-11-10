@@ -1,8 +1,8 @@
 #include "randblocks.hpp"
 
-RandBlocks::RandBlocks(const sf::Vector2f& tileSize)
+RandBlocks::RandBlocks(const sf::Vector2f &tileSize)
 {
-    this->blocks = new Block*[7];
+    this->blocks = new Block *[7];
 
     this->blocks[0] = new IBlock(tileSize);
     this->blocks[1] = new OBlock(tileSize);
@@ -24,16 +24,16 @@ RandBlocks::~RandBlocks()
     delete[] this->blocks;
 }
 
-Block* RandBlocks::randomBlock()
+Block *RandBlocks::randomBlock()
 {
     int i = rand() % 7;
 
-    return this->blocks[i];    
+    return this->blocks[i];
 }
 
-Block& RandBlocks::getAndUpdate()
+Block &RandBlocks::getAndUpdate()
 {
-    Block* block = nextBlock;
+    Block *block = nextBlock;
 
     nextBlock = randomBlock();
 
@@ -44,4 +44,3 @@ Block& RandBlocks::getAndUpdate()
 
     return *block;
 }
-

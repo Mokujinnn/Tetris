@@ -1,29 +1,31 @@
 #include "GameState.hpp"
 
-GameState::GameState(int rows, int cols, sf::Vector2f tileSize, int tilePadding)
+GameState::GameState(int rows, int cols, sf::Vector2f tileSize, float tilePadding) : Grid(new GameGrid(rows, cols, tileSize, tilePadding)),
+                                                                                     RandBlock(new RandBlocks(tileSize)),
+                                                                                     gameOver(false),
+                                                                                     CurrentBlock(tileSize)
 {
-    this->Grid = new GameGrid(rows, cols, tileSize, tilePadding);
-    this->RandBlock = new RandBlocks(tileSize);
     this->CurrentBlock = RandBlock->getAndUpdate();
 }
 
 GameState::~GameState()
 {
     delete Grid;
+    delete RandBlock;
 }
 
 bool GameState::isLegalPosition()
 {
-    sf::Vector2i* t = CurrentBlock.getTilesPositions();
+    sf::Vector2i *t = CurrentBlock.getTilesPositions();
 
     sf::Vector2i tiles[TILES_IN_FIGURE] = {t[0], t[1], t[2], t[3]};
-    delete [] t;
+    delete[] t;
 
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {
         sf::Vector2i tile = tiles[i];
 
-        if(!Grid->isEmpty(tile.x, tile.y))
+        if (!Grid->isEmpty(tile.x, tile.y))
             return false;
     }
 
@@ -83,12 +85,12 @@ bool GameState::isGameOver()
     return (Grid->isRowEmpty(0) && Grid->isRowEmpty(1));
 }
 
-void GameState::placeBlock() //Размещение блока на сетку
+void GameState::placeBlock() // Размещение блока на сетку
 {
-    sf::Vector2i* t = CurrentBlock.getTilesPositions();
+    sf::Vector2i *t = CurrentBlock.getTilesPositions();
 
     sf::Vector2i tiles[TILES_IN_FIGURE] = {t[0], t[1], t[2], t[3]};
-    delete [] t;
+    delete[] t;
 
     for (int i = 0; i < TILES_IN_FIGURE; i++)
     {

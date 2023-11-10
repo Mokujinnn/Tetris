@@ -10,7 +10,7 @@ set(SFML_ROOT_DIR "../SFMLbuild")
 set(SFML_DIR "${SFML_ROOT_DIR}")
 
 find_package(SFML 2.6 REQUIRED 
-    COMPONENTS system window audio graphics)
+    COMPONENTS system window audio graphics main)
 
 set(SFML_LIBRARIES 
     "sfml-system sfml-window sfml-audio sfml-graphics")
@@ -26,7 +26,7 @@ file(GLOB CPPS "src/*.cpp")
 file(GLOB HPPS "include/*.hpp")
 
 add_executable(${PROJECT_NAME} ${CPPS} ${HPPS})
-target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-audio sfml-graphics)
+target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-audio sfml-graphics sfml-main)
 
 target_include_directories( ${PROJECT_NAME}
     PUBLIC ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/SFML-2.6.0/include)
