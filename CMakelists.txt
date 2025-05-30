@@ -1,7 +1,13 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.15)
+project(Tetris)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# set(BUILD_SHARED_LIBS OFF)
-# set(SFML_USE_STATIC_STD_LIBS TRUE)
-add_subdirectory(SFML-2.6.0)
+set(SFML_BUILD_AUDIO FALSE)
+set(SFML_BUILD_NETWORK FALSE)
+set(BUILD_SHARED_LIBS FALSE)
+
+add_subdirectory(SFML-2.6)
+
 add_subdirectory(Tetris)
